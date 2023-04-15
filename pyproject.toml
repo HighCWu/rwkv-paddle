@@ -1,6 +1,6 @@
 [project]
 name = "rwkv-paddle"
-version = "0.7.3"
+version = "0.7.3.1"
 authors = [
   { name="HighCWu" },
 ]

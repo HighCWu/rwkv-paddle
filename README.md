@@ -8,9 +8,11 @@ https://github.com/BlinkDL/RWKV-LM
 
 PS: Some strategies are not supported on PaddlePaddle. The best supported strategies are 'cuda fp16' and 'cpu fp32'.
 
-PS: PaddlePaddle version should be greater than 2.4.0
+PS: PaddlePaddle version should be greater than 2.4.0.
 
 ```python
+import os
+
 # set these before import RWKV
 os.environ['RWKV_JIT_ON'] = '0' # RWKV JIT Mode is not supported on paddlepaddle now
 os.environ["RWKV_CUDA_ON"] = '0' # '1' to compile CUDA kernel (10x faster), requires c++ compiler & cuda libraries
@@ -53,8 +55,8 @@ os.environ["RWKV_CUDA_ON"] = '0' # '1' to compile CUDA kernel (10x faster), requ
 #
 # ########################################################################################################
 
-from rwkv.model import RWKV
-from rwkv.utils import PIPELINE, PIPELINE_ARGS
+from rwkv_paddle.model import RWKV
+from rwkv_paddle.utils import PIPELINE, PIPELINE_ARGS
 
 # download models: https://huggingface.co/BlinkDL
 model = RWKV(model='/fsx/BlinkDL/HF-MODEL/rwkv-4-pile-169m/RWKV-4-Pile-169M-20220807-8023', strategy='cpu fp32')
