@@ -1,0 +1,21 @@
+[project]
+name = "rwkv-paddle"
+version = "0.7.3"
+authors = [
+  { name="HighCWu" },
+]
+description = "The RWKV Language Model on PaddlePaddle"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+  'tokenizers >= 0.13.2',
+]
+
+[project.urls]
+"Homepage" = "https://github.com/HighCWu/rwkv-paddle"
+"Bug Tracker" = "https://github.com/HighCWu/rwkv-paddle/issues"
