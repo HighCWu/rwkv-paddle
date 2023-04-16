@@ -23,12 +23,16 @@ else:
     MyStatic = __nop
 
 if os.environ.get('RWKV_CUDA_ON') == '1':
-    from paddle.utils.cpp_extension import load
-    rwkv_ops = load(
-        name=f"wkv_cuda",
-        sources=[f"{current_path}/cuda/wrapper.cpp", f"{current_path}/cuda/operators.cu"],
-        verbose=True,
-        extra_cuda_cflags=["-t 4", "-std=c++17", "--use_fast_math", "-O3", "--extra-device-vectorization"])
+    try:
+        import wkv_cuda
+        rwkv_ops = wkv_cuda
+    except ImportError:
+        from paddle.utils.cpp_extension import load
+        rwkv_ops = load(
+            name=f"wkv_cuda",
+            sources=[f"{current_path}/cuda/wrapper.cpp", f"{current_path}/cuda/operators.cu"],
+            verbose=True,
+            extra_cuda_cflags=["-t 4", "-std=c++17", "--use_fast_math", "-O3", "--extra-device-vectorization"])
 
     @MyStatic
     def cuda_wkv(T: int, C: int, w, u, k, v, aa, bb, pp):
